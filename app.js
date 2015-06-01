@@ -7,6 +7,9 @@ function Player (name, points) {
     this.setPoints = function(points){
     	this.points = points;
     };
+    this.addPoint = function(){
+      this.points++;
+    };
     this.persist = function(id){
         if(id === 1){
 	    	setCookie('P1name',this.name,0);
@@ -42,43 +45,16 @@ function Player (name, points) {
 
 
 jQuery(document).ready(function($) {
-	$('#save').click(function(event) {
-		player1.persist();
-		player2.persist();
-	});
-
-	$('#load').click(function(event) {
-		player1.loadData(1);
-		player2.loadData(2);
-	});
-
-
-	$('#typedPlayerName1').click(function() {
-  		$('#typedPlayerName1').val('');
-	});
-	$('#typedPlayerName2').click(function() {
-  		$('#typedPlayerName2').val('');
-	});
-
-	$('#typedPlayerName1').keyup(function() {
-  		player1.setName($('#typedPlayerName1').val());
-  		player1.showData(1);
-	});
-	$('#typedPlayerName2').keyup(function() {
-  		player2.setName($('#typedPlayerName2').val());
-  		player2.showData(2);
-	});
-
-	$('#true').click(function(event) {
-		player1.points++;
-		player1.showData(1);
-	});
-	$('#jinx').click(function(event) {
-		player2.points--;
-		player2.showData(2);
-	});
+  events();
 });
 
+function playerSelectorAddPoints(){
+    if(activePane === 1){
+        player1.events();
+    }else if(activePane === 2){
+        player2.events();
+    }
+}
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -100,3 +76,4 @@ function getCookie(cname) {
 
 var player1 = new Player('Player 1',0);
 var player2 = new Player('Player 2',0);
+var activePane = 1;

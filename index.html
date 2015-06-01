@@ -1,16 +1,17 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-  <title>My Page</title> 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The game of faces - alpha</title>
   <meta name="viewport" content="initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-  <script src="pointSys.js"></script>
-</head> 
-<body> 
+  <script src="events.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
 
 <div data-role="page">
 
@@ -19,9 +20,13 @@
     <h1>Jinx</h1>
   </div><!-- /header -->
 
-  <div data-role="content"> 
-    <p>The game of faces</p>    
-    
+  <div data-role="content">
+    <h1>Game of faces</h1>
+
+    <label>
+    This is an alpha version very much in development. If you are interested you can follow me <a href="twitter.com/thaenor">@thaenor</a>
+    </label>
+
     <div data-role="collapsible" data-theme="a" data-content-theme="a">
         <h3>WTF is this</h3>
         <p>
@@ -30,18 +35,18 @@
       </div>
 
     <div class="ui-body">
-      <div class="ui-btn-inline ui-btn-icon-left">
+      <div id="panelplay1" class="ui-btn-inline ui-btn-icon-left">
         <h4 id='1name'>Player 1</h4>
         <label id="p1points">3</label>
       </div>
 
-      <div class="ui-btn-inline ui-btn-icon-left">
+      <div id="panelplay2" class="ui-btn-inline ui-btn-icon-left">
         <h4 id="2name">Player 2</h4>
         <label id="p2points">1</label>
       </div>
 
-      <a id="true" href="#" data-role="button" class="ui-shadow">True</a> 
-      <a id="jinx" href="#" data-role="button" class="ui-shadow">Jinx</a>
+      <a id="true" href="#" data-role="button" class="ui-shadow">I fooled him!</a>
+      <a id="jinx" href="#" data-role="button" class="ui-shadow">He called BS!</a>
     </div><!-- /themed container -->
 
 

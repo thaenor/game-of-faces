@@ -5,39 +5,56 @@ function Player (name, points) {
         this.name = name;
     };
     this.setPoints = function(points){
-    	this.points = points;
+        this.points = points;
     };
     this.addPoint = function(){
       this.points++;
     };
     this.persist = function(id){
         if(id === 1){
-	    	setCookie('P1name',this.name,0);
-	    	setCookie('P1points',this.points,0);
+            // Check browser support
+            if (typeof(Storage) != "undefined") {
+                localStorage.setItem("player1_name", this.name);
+                localStorage.setItem("player1_points", this.points);
+            } else {
+              alert("Sorry, your browser does not support Web Storage...");
+            }
         } else
         if(id === 2){
-	    	setCookie('P2name',this.name,0);
-	    	setCookie('P2points',this.points,0);
+            // Check browser support
+            if (typeof(Storage) != "undefined") {
+                localStorage.setItem("player1_name", this.name);
+                localStorage.setItem("player1_points", this.points);
+            } else {
+              alert("Sorry, your browser does not support Web Storage...");
+            }
         }
     };
     this.loadData = function(id){
         if(id === 1){
-	    	this.name = getCookie('P1name');
-	    	this.points = getCookie('P1points');
-        } else
-        if(id === 2){
-	    	this.name = getCookie('P2name');
-	    	this.points = getCookie('P2points');
-        }
+            if (typeof(Storage) != "undefined") {
+                // Retrieve
+                this.name = localStorage.getItem("player1_name");
+                this.points = localStorage.getItem("player1_points");
+            } else {
+              alert("Sorry, your browser does not support Web Storage...");
+            }
+        } else if(id === 2){
+                    // Retrieve
+                    this.name = localStorage.getItem("player1_name");
+                    this.points = localStorage.getItem("player1_points");
+                } else {
+                    alert("Sorry, your browser does not support Web Storage...");
+                }
     };
     this.showData = function(id){
         if(id === 1){
-        	$('#1name').empty().append(this.name);
-        	$('#p1points').empty().append(this.points);
+            $('#1name').empty().append(this.name);
+            $('#p1points').empty().append(this.points);
         } else
         if(id === 2){
-        	$('#2name').empty().append(this.name);
-        	$('#p2points').empty().append(this.points);
+            $('#2name').empty().append(this.name);
+            $('#p2points').empty().append(this.points);
         }
     };
 
@@ -56,23 +73,6 @@ function playerSelectorAddPoints(){
     }
 }
 
-function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-    }
-    return "";
-}
 
 var player1 = new Player('Player 1',0);
 var player2 = new Player('Player 2',0);

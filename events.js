@@ -61,7 +61,7 @@ function events(){
     if(activePane === 1)
       player1.points--;
     else if (activePane === 2)
-      player2.addPoint();
+      player2.points--;
     player1.showData(1);
     player2.showData(2);
   });

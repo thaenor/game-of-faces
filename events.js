@@ -6,7 +6,9 @@ function events(){
 
 	$('#load').click(function(event) {
 		player1.loadData(1);
+		player1.showData(1);
 		player2.loadData(2);
+		player2.showData(2);
 	});
 
   /** cleans textfields */
